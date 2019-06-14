@@ -1,0 +1,282 @@
+180405  9:07:03 [Warning] Failed to setup SSL
+180405  9:07:03 [Warning] SSL error: SSL_CTX_set_default_verify_paths failed
+180405  9:07:03 [Warning] Failed to setup SSL
+180405  9:07:03 [Warning] SSL error: SSL_CTX_set_default_verify_paths failed
+180405 09:07:04 mysqld_safe Starting mysqld daemon with databases from /var/lib/mysql
+180405  9:07:04 [Note] /usr/libexec/mysqld (mysqld 5.5.56-MariaDB) starting as process 64240 ...
+180405  9:07:04 InnoDB: The InnoDB memory heap is disabled
+180405  9:07:04 InnoDB: Mutexes and rw_locks use GCC atomic builtins
+180405  9:07:04 InnoDB: Compressed tables use zlib 1.2.7
+180405  9:07:04 InnoDB: Using Linux native AIO
+180405  9:07:04 InnoDB: Initializing buffer pool, size = 128.0M
+180405  9:07:04 InnoDB: Completed initialization of buffer pool
+InnoDB: The first specified data file ./ibdata1 did not exist:
+InnoDB: a new database to be created!
+180405  9:07:04  InnoDB: Setting file ./ibdata1 size to 10 MB
+InnoDB: Database physically writes the file full: wait...
+180405  9:07:04  InnoDB: Log file ./ib_logfile0 did not exist: new to be created
+InnoDB: Setting log file ./ib_logfile0 size to 5 MB
+InnoDB: Database physically writes the file full: wait...
+180405  9:07:04  InnoDB: Log file ./ib_logfile1 did not exist: new to be created
+InnoDB: Setting log file ./ib_logfile1 size to 5 MB
+InnoDB: Database physically writes the file full: wait...
+InnoDB: Doublewrite buffer not found: creating new
+InnoDB: Doublewrite buffer created
+InnoDB: 127 rollback segment(s) active.
+InnoDB: Creating foreign key constraint system tables
+InnoDB: Foreign key constraint system tables created
+180405  9:07:04  InnoDB: Waiting for the background threads to start
+180405  9:07:05 Percona XtraDB (http://www.percona.com) 5.5.52-MariaDB-38.3 started; log sequence number 0
+180405  9:07:05 [Note] Plugin 'FEEDBACK' is disabled.
+180405  9:07:05 [Warning] Failed to setup SSL
+180405  9:07:05 [Warning] SSL error: SSL_CTX_set_default_verify_paths failed
+180405  9:07:05 [Note] Server socket created on IP: '127.0.0.1'.
+180405  9:07:05 [Note] Event Scheduler: Loaded 0 events
+180405  9:07:05 [Note] /usr/libexec/mysqld: ready for connections.
+Version: '5.5.56-MariaDB'  socket: '/var/lib/mysql/mysql.sock'  port: 3306  MariaDB Server
+180804 20:33:43 mysqld_safe Number of processes running now: 0
+180804 20:33:43 mysqld_safe mysqld restarted
+180804 20:33:43 [Note] /usr/libexec/mysqld (mysqld 5.5.56-MariaDB) starting as process 64403 ...
+180804 20:33:43 InnoDB: The InnoDB memory heap is disabled
+180804 20:33:43 InnoDB: Mutexes and rw_locks use GCC atomic builtins
+180804 20:33:43 InnoDB: Compressed tables use zlib 1.2.7
+180804 20:33:43 InnoDB: Using Linux native AIO
+180804 20:33:43 InnoDB: Initializing buffer pool, size = 128.0M
+180804 20:33:43 InnoDB: Completed initialization of buffer pool
+180804 20:33:43 InnoDB: highest supported file format is Barracuda.
+180804 20:33:43  InnoDB: Starting crash recovery from checkpoint LSN=24914893950
+InnoDB: Restoring possible half-written data pages from the doublewrite buffer...
+180804 20:33:43  InnoDB: Starting final batch to recover 20 pages from redo log
+180804 20:33:44  InnoDB: Waiting for the background threads to start
+180804 20:33:45 Percona XtraDB (http://www.percona.com) 5.5.52-MariaDB-38.3 started; log sequence number 24914899839
+180804 20:33:45 [Note] Plugin 'FEEDBACK' is disabled.
+180804 20:33:45 [Warning] Failed to setup SSL
+180804 20:33:45 [Warning] SSL error: SSL_CTX_set_default_verify_paths failed
+180804 20:33:45 [Note] Server socket created on IP: '127.0.0.1'.
+180804 20:33:45 [Note] Event Scheduler: Loaded 0 events
+180804 20:33:45 [Note] /usr/libexec/mysqld: ready for connections.
+Version: '5.5.56-MariaDB'  socket: '/var/lib/mysql/mysql.sock'  port: 3306  MariaDB Server
+181209 00:10:50 mysqld_safe Number of processes running now: 0
+181209 00:10:50 mysqld_safe mysqld restarted
+181209  0:10:50 [Note] /usr/libexec/mysqld (mysqld 5.5.56-MariaDB) starting as process 15297 ...
+181209  0:10:50 InnoDB: The InnoDB memory heap is disabled
+181209  0:10:50 InnoDB: Mutexes and rw_locks use GCC atomic builtins
+181209  0:10:50 InnoDB: Compressed tables use zlib 1.2.7
+181209  0:10:50 InnoDB: Using Linux native AIO
+181209  0:10:50 InnoDB: Initializing buffer pool, size = 128.0M
+181209  0:10:50 InnoDB: Completed initialization of buffer pool
+181209  0:10:50 InnoDB: highest supported file format is Barracuda.
+181209  0:10:50  InnoDB: Starting crash recovery from checkpoint LSN=48697854418
+InnoDB: Restoring possible half-written data pages from the doublewrite buffer...
+181209  0:10:50  InnoDB: Starting final batch to recover 2 pages from redo log
+181209  0:10:51  InnoDB: Waiting for the background threads to start
+181209  0:10:52 Percona XtraDB (http://www.percona.com) 5.5.52-MariaDB-38.3 started; log sequence number 48697855133
+181209  0:10:52 [Note] Plugin 'FEEDBACK' is disabled.
+181209  0:10:52 [Warning] Failed to setup SSL
+181209  0:10:52 [Warning] SSL error: SSL_CTX_set_default_verify_paths failed
+181209  0:10:52 [Note] Server socket created on IP: '127.0.0.1'.
+181209  0:10:52 [Note] Event Scheduler: Loaded 0 events
+181209  0:10:52 [Note] /usr/libexec/mysqld: ready for connections.
+Version: '5.5.56-MariaDB'  socket: '/var/lib/mysql/mysql.sock'  port: 3306  MariaDB Server
+190106 01:12:37 mysqld_safe Number of processes running now: 0
+190106 01:12:37 mysqld_safe mysqld restarted
+190106  1:12:37 [Note] /usr/libexec/mysqld (mysqld 5.5.56-MariaDB) starting as process 7395 ...
+190106  1:12:37 InnoDB: The InnoDB memory heap is disabled
+190106  1:12:37 InnoDB: Mutexes and rw_locks use GCC atomic builtins
+190106  1:12:37 InnoDB: Compressed tables use zlib 1.2.7
+190106  1:12:37 InnoDB: Using Linux native AIO
+190106  1:12:37 InnoDB: Initializing buffer pool, size = 128.0M
+190106  1:12:37 InnoDB: Completed initialization of buffer pool
+190106  1:12:37 InnoDB: highest supported file format is Barracuda.
+190106  1:12:37  InnoDB: Starting crash recovery from checkpoint LSN=54418246014
+InnoDB: Restoring possible half-written data pages from the doublewrite buffer...
+190106  1:12:38  InnoDB: Starting final batch to recover 31 pages from redo log
+190106  1:12:38  InnoDB: Waiting for the background threads to start
+190106  1:12:39 Percona XtraDB (http://www.percona.com) 5.5.52-MariaDB-38.3 started; log sequence number 54418255750
+190106  1:12:39 [Note] Plugin 'FEEDBACK' is disabled.
+190106  1:12:39 [Warning] Failed to setup SSL
+190106  1:12:39 [Warning] SSL error: SSL_CTX_set_default_verify_paths failed
+190106  1:12:39 [Note] Server socket created on IP: '127.0.0.1'.
+190106  1:12:39 [Note] Event Scheduler: Loaded 0 events
+190106  1:12:39 [Note] /usr/libexec/mysqld: ready for connections.
+Version: '5.5.56-MariaDB'  socket: '/var/lib/mysql/mysql.sock'  port: 3306  MariaDB Server
+190112 01:25:24 mysqld_safe Number of processes running now: 0
+190112 01:25:24 mysqld_safe mysqld restarted
+190112  1:25:24 [Note] /usr/libexec/mysqld (mysqld 5.5.56-MariaDB) starting as process 40612 ...
+190112  1:25:24 InnoDB: The InnoDB memory heap is disabled
+190112  1:25:24 InnoDB: Mutexes and rw_locks use GCC atomic builtins
+190112  1:25:24 InnoDB: Compressed tables use zlib 1.2.7
+190112  1:25:24 InnoDB: Using Linux native AIO
+190112  1:25:24 InnoDB: Initializing buffer pool, size = 128.0M
+190112  1:25:24 InnoDB: Completed initialization of buffer pool
+190112  1:25:24 InnoDB: highest supported file format is Barracuda.
+190112  1:25:24  InnoDB: Starting crash recovery from checkpoint LSN=55997387624
+InnoDB: Restoring possible half-written data pages from the doublewrite buffer...
+190112  1:25:25  InnoDB: Starting final batch to recover 554 pages from redo log
+190112  1:25:26  InnoDB: Waiting for the background threads to start
+190112  1:25:27 Percona XtraDB (http://www.percona.com) 5.5.52-MariaDB-38.3 started; log sequence number 55997527094
+190112  1:25:27 [Note] Plugin 'FEEDBACK' is disabled.
+190112  1:25:27 [Warning] Failed to setup SSL
+190112  1:25:27 [Warning] SSL error: SSL_CTX_set_default_verify_paths failed
+190112  1:25:27 [Note] Server socket created on IP: '127.0.0.1'.
+190112  1:25:27 [Note] Event Scheduler: Loaded 0 events
+190112  1:25:27 [Note] /usr/libexec/mysqld: ready for connections.
+Version: '5.5.56-MariaDB'  socket: '/var/lib/mysql/mysql.sock'  port: 3306  MariaDB Server
+190122 01:45:39 mysqld_safe Number of processes running now: 0
+190122 01:45:39 mysqld_safe mysqld restarted
+190122  1:45:39 InnoDB: The InnoDB memory heap is disabled
+190122  1:45:39 InnoDB: Mutexes and rw_locks use GCC atomic builtins
+190122  1:45:39 InnoDB: Compressed tables use zlib 1.2.7
+190122  1:45:39 InnoDB: Using Linux native AIO
+190122  1:45:39 [Note] /usr/libexec/mysqld (mysqld 5.5.56-MariaDB) starting as process 7291 ...
+190122  1:45:39 InnoDB: Initializing buffer pool, size = 128.0M
+190122  1:45:39 InnoDB: Completed initialization of buffer pool
+190122  1:45:39 InnoDB: highest supported file format is Barracuda.
+190122  1:45:39  InnoDB: Starting crash recovery from checkpoint LSN=58338711130
+InnoDB: Restoring possible half-written data pages from the doublewrite buffer...
+190122  1:45:39  InnoDB: Starting final batch to recover 7 pages from redo log
+190122  1:45:40  InnoDB: Waiting for the background threads to start
+190122  1:45:41 Percona XtraDB (http://www.percona.com) 5.5.52-MariaDB-38.3 started; log sequence number 58338716269
+190122  1:45:41 [Note] Plugin 'FEEDBACK' is disabled.
+190122  1:45:41 [Warning] Failed to setup SSL
+190122  1:45:41 [Warning] SSL error: SSL_CTX_set_default_verify_paths failed
+190122  1:45:41 [Note] Server socket created on IP: '127.0.0.1'.
+190122  1:45:41 [Note] Event Scheduler: Loaded 0 events
+190122  1:45:41 [Note] /usr/libexec/mysqld: ready for connections.
+Version: '5.5.56-MariaDB'  socket: '/var/lib/mysql/mysql.sock'  port: 3306  MariaDB Server
+190205 02:33:40 mysqld_safe Number of processes running now: 0
+190205 02:33:40 mysqld_safe mysqld restarted
+190205  2:33:40 [Note] /usr/libexec/mysqld (mysqld 5.5.56-MariaDB) starting as process 34597 ...
+190205  2:33:40 InnoDB: The InnoDB memory heap is disabled
+190205  2:33:40 InnoDB: Mutexes and rw_locks use GCC atomic builtins
+190205  2:33:40 InnoDB: Compressed tables use zlib 1.2.7
+190205  2:33:40 InnoDB: Using Linux native AIO
+190205  2:33:40 InnoDB: Initializing buffer pool, size = 128.0M
+190205  2:33:40 InnoDB: Completed initialization of buffer pool
+190205  2:33:40 InnoDB: highest supported file format is Barracuda.
+190205  2:33:40  InnoDB: Starting crash recovery from checkpoint LSN=61501278331
+InnoDB: Restoring possible half-written data pages from the doublewrite buffer...
+190205  2:33:41  InnoDB: Starting final batch to recover 15 pages from redo log
+190205  2:33:41  InnoDB: Waiting for the background threads to start
+190205  2:33:42 Percona XtraDB (http://www.percona.com) 5.5.52-MariaDB-38.3 started; log sequence number 61501281234
+190205  2:33:42 [Note] Plugin 'FEEDBACK' is disabled.
+190205  2:33:42 [Warning] Failed to setup SSL
+190205  2:33:42 [Warning] SSL error: SSL_CTX_set_default_verify_paths failed
+190205  2:33:42 [Note] Server socket created on IP: '127.0.0.1'.
+190205  2:33:42 [Note] Event Scheduler: Loaded 0 events
+190205  2:33:42 [Note] /usr/libexec/mysqld: ready for connections.
+Version: '5.5.56-MariaDB'  socket: '/var/lib/mysql/mysql.sock'  port: 3306  MariaDB Server
+190207 02:38:47 mysqld_safe Number of processes running now: 0
+190207 02:38:47 mysqld_safe mysqld restarted
+190207  2:38:47 [Note] /usr/libexec/mysqld (mysqld 5.5.56-MariaDB) starting as process 64043 ...
+190207  2:38:47 InnoDB: The InnoDB memory heap is disabled
+190207  2:38:47 InnoDB: Mutexes and rw_locks use GCC atomic builtins
+190207  2:38:47 InnoDB: Compressed tables use zlib 1.2.7
+190207  2:38:47 InnoDB: Using Linux native AIO
+190207  2:38:47 InnoDB: Initializing buffer pool, size = 128.0M
+190207  2:38:47 InnoDB: Completed initialization of buffer pool
+190207  2:38:47 InnoDB: highest supported file format is Barracuda.
+190207  2:38:47  InnoDB: Starting crash recovery from checkpoint LSN=61950004924
+InnoDB: Restoring possible half-written data pages from the doublewrite buffer...
+190207  2:38:47  InnoDB: Starting final batch to recover 37 pages from redo log
+190207  2:38:48  InnoDB: Waiting for the background threads to start
+190207  2:38:49 Percona XtraDB (http://www.percona.com) 5.5.52-MariaDB-38.3 started; log sequence number 61950017563
+190207  2:38:49 [Note] Plugin 'FEEDBACK' is disabled.
+190207  2:38:49 [Warning] Failed to setup SSL
+190207  2:38:49 [Warning] SSL error: SSL_CTX_set_default_verify_paths failed
+190207  2:38:49 [Note] Server socket created on IP: '127.0.0.1'.
+190207  2:38:49 [Note] Event Scheduler: Loaded 0 events
+190207  2:38:49 [Note] /usr/libexec/mysqld: ready for connections.
+Version: '5.5.56-MariaDB'  socket: '/var/lib/mysql/mysql.sock'  port: 3306  MariaDB Server
+190406 05:32:09 mysqld_safe Number of processes running now: 0
+190406 05:32:09 mysqld_safe mysqld restarted
+190406  5:32:09 InnoDB: The InnoDB memory heap is disabled
+190406  5:32:09 InnoDB: Mutexes and rw_locks use GCC atomic builtins
+190406  5:32:09 InnoDB: Compressed tables use zlib 1.2.7
+190406  5:32:09 InnoDB: Using Linux native AIO
+190406  5:32:09 [Note] /usr/libexec/mysqld (mysqld 5.5.56-MariaDB) starting as process 62309 ...
+190406  5:32:09 InnoDB: Initializing buffer pool, size = 128.0M
+190406  5:32:09 InnoDB: Completed initialization of buffer pool
+190406  5:32:09 InnoDB: highest supported file format is Barracuda.
+190406  5:32:09  InnoDB: Starting crash recovery from checkpoint LSN=76735770570
+InnoDB: Restoring possible half-written data pages from the doublewrite buffer...
+190406  5:32:09  InnoDB: Starting final batch to recover 18 pages from redo log
+190406  5:32:10  InnoDB: Waiting for the background threads to start
+190406  5:32:11 Percona XtraDB (http://www.percona.com) 5.5.52-MariaDB-38.3 started; log sequence number 76735774252
+190406  5:32:11 [Note] Plugin 'FEEDBACK' is disabled.
+190406  5:32:11 [Warning] Failed to setup SSL
+190406  5:32:11 [Warning] SSL error: SSL_CTX_set_default_verify_paths failed
+190406  5:32:11 [Note] Server socket created on IP: '127.0.0.1'.
+190406  5:32:11 [Note] Event Scheduler: Loaded 0 events
+190406  5:32:11 [Note] /usr/libexec/mysqld: ready for connections.
+Version: '5.5.56-MariaDB'  socket: '/var/lib/mysql/mysql.sock'  port: 3306  MariaDB Server
+190406 05:40:14 mysqld_safe Number of processes running now: 0
+190406 05:40:14 mysqld_safe mysqld restarted
+190406  5:40:14 [Note] /usr/libexec/mysqld (mysqld 5.5.56-MariaDB) starting as process 62701 ...
+190406  5:40:14 InnoDB: The InnoDB memory heap is disabled
+190406  5:40:14 InnoDB: Mutexes and rw_locks use GCC atomic builtins
+190406  5:40:14 InnoDB: Compressed tables use zlib 1.2.7
+190406  5:40:14 InnoDB: Using Linux native AIO
+190406  5:40:14 InnoDB: Initializing buffer pool, size = 128.0M
+190406  5:40:14 InnoDB: Completed initialization of buffer pool
+190406  5:40:14 InnoDB: highest supported file format is Barracuda.
+190406  5:40:14  InnoDB: Starting crash recovery from checkpoint LSN=76736380670
+InnoDB: Restoring possible half-written data pages from the doublewrite buffer...
+190406  5:40:14  InnoDB: Starting final batch to recover 10 pages from redo log
+190406  5:40:14  InnoDB: Waiting for the background threads to start
+190406  5:40:15 Percona XtraDB (http://www.percona.com) 5.5.52-MariaDB-38.3 started; log sequence number 76736383058
+190406  5:40:15 [Note] Plugin 'FEEDBACK' is disabled.
+190406  5:40:15 [Warning] Failed to setup SSL
+190406  5:40:15 [Warning] SSL error: SSL_CTX_set_default_verify_paths failed
+190406  5:40:15 [Note] Server socket created on IP: '127.0.0.1'.
+190406  5:40:16 [Note] Event Scheduler: Loaded 0 events
+190406  5:40:16 [Note] /usr/libexec/mysqld: ready for connections.
+Version: '5.5.56-MariaDB'  socket: '/var/lib/mysql/mysql.sock'  port: 3306  MariaDB Server
+190430 05:34:05 mysqld_safe Number of processes running now: 0
+190430 05:34:05 mysqld_safe mysqld restarted
+190430  5:34:05 InnoDB: The InnoDB memory heap is disabled
+190430  5:34:05 InnoDB: Mutexes and rw_locks use GCC atomic builtins
+190430  5:34:05 InnoDB: Compressed tables use zlib 1.2.7
+190430  5:34:05 InnoDB: Using Linux native AIO
+190430  5:34:05 [Note] /usr/libexec/mysqld (mysqld 5.5.56-MariaDB) starting as process 54860 ...
+190430  5:34:05 InnoDB: Initializing buffer pool, size = 128.0M
+190430  5:34:05 InnoDB: Completed initialization of buffer pool
+190430  5:34:05 InnoDB: highest supported file format is Barracuda.
+190430  5:34:05  InnoDB: Starting crash recovery from checkpoint LSN=82226879558
+InnoDB: Restoring possible half-written data pages from the doublewrite buffer...
+190430  5:34:06  InnoDB: Starting final batch to recover 21 pages from redo log
+190430  5:34:06  InnoDB: Waiting for the background threads to start
+190430  5:34:07 Percona XtraDB (http://www.percona.com) 5.5.52-MariaDB-38.3 started; log sequence number 82226884973
+190430  5:34:07 [Note] Plugin 'FEEDBACK' is disabled.
+190430  5:34:07 [Warning] Failed to setup SSL
+190430  5:34:07 [Warning] SSL error: SSL_CTX_set_default_verify_paths failed
+190430  5:34:07 [Note] Server socket created on IP: '127.0.0.1'.
+190430  5:34:07 [Note] Event Scheduler: Loaded 0 events
+190430  5:34:07 [Note] /usr/libexec/mysqld: ready for connections.
+Version: '5.5.56-MariaDB'  socket: '/var/lib/mysql/mysql.sock'  port: 3306  MariaDB Server
+190504 05:43:02 mysqld_safe Number of processes running now: 0
+190504 05:43:02 mysqld_safe mysqld restarted
+190504  5:43:02 InnoDB: The InnoDB memory heap is disabled
+190504  5:43:02 InnoDB: Mutexes and rw_locks use GCC atomic builtins
+190504  5:43:02 InnoDB: Compressed tables use zlib 1.2.7
+190504  5:43:02 InnoDB: Using Linux native AIO
+190504  5:43:02 InnoDB: Initializing buffer pool, size = 128.0M
+190504  5:43:02 [Note] /usr/libexec/mysqld (mysqld 5.5.56-MariaDB) starting as process 57441 ...
+190504  5:43:02 InnoDB: Completed initialization of buffer pool
+190504  5:43:02 InnoDB: highest supported file format is Barracuda.
+190504  5:43:02  InnoDB: Starting crash recovery from checkpoint LSN=83018874130
+InnoDB: Restoring possible half-written data pages from the doublewrite buffer...
+190504  5:43:02  InnoDB: Starting final batch to recover 5 pages from redo log
+190504  5:43:02  InnoDB: Waiting for the background threads to start
+190504  5:43:03 Percona XtraDB (http://www.percona.com) 5.5.52-MariaDB-38.3 started; log sequence number 83018875325
+190504  5:43:04 [Note] Plugin 'FEEDBACK' is disabled.
+190504  5:43:04 [Warning] Failed to setup SSL
+190504  5:43:04 [Warning] SSL error: SSL_CTX_set_default_verify_paths failed
+190504  5:43:04 [Note] Server socket created on IP: '127.0.0.1'.
+190504  5:43:04 [Note] Event Scheduler: Loaded 0 events
+190504  5:43:04 [Note] /usr/libexec/mysqld: ready for connections.
+Version: '5.5.56-MariaDB'  socket: '/var/lib/mysql/mysql.sock'  port: 3306  MariaDB Server
+190506  6:00:23 [Warning] mysqld: Disk is full writing '/tmp/#sql_e061_53.MAD' (Errcode: 28). Waiting for someone to free space... (Expect up to 60 secs delay for server to continue after freeing disk space)
+190506  6:00:23 [Warning] mysqld: Retry in 60 secs. Message reprinted in 600 secs
+190506  6:00:23 [Warning] mysqld: Disk is full writing '/tmp/#sql_e061_2.MAD' (Errcode: 28). Waiting for someone to free space... (Expect up to 60 secs delay for server to continue after freeing disk space)
+190506  6:00:23 [Warning] mysqld: Retry in 60 secs. Message reprinted in 600 secs
