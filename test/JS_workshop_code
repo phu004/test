@@ -59,8 +59,10 @@ function getEnrolledStudents(classNbrs){
         let loadedClasses = 0;
 
         for(let i = 0; i < numOfClasses; i++){
-            if(errorOccured)
-                break;
+            if(errorOccured){
+                resolve(null);
+		break;
+	    }
             let url = global.enrolment_api_base_url + "?size=1000&offset=0&acadYear="+year+"&classId="+classNbrs[i];
             request(
                 {
