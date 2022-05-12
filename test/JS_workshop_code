@@ -1,0 +1,224 @@
+const express = require('express');
+const router = express.Router();
+const ldap = require('ldapjs');
+const request = require('request');
+
+router.get('/', (req, res) => {
+	res.send('<b>JS workshop on Async programming</b>');
+});
+
+
+router.get('/getStudents', async (req, res) => {
+    let acadOrg = req.query.acadOrg;
+    let catalogNbr = req.query.catalogNbr;
+    let semester = req.query.semester;
+
+    //get all the classes that belongs to the course
+    let classData = await getClasses(acadOrg, catalogNbr);
+    if(classData == null){
+	    res.status(200).send([]);
+        console.log("get classes failed");
+        return;
+    }else
+        classData = JSON.parse(classData);
+
+    if(classData.data == null){
+        res.status(200).send([]);
+        console.log("get students failed");
+        return;
+    }
+
+    //extract the class numbers from the classes
+    let classNbrs = [];
+    for(let i = 0; i < classData.data.length; i++){
+        if(validateSemesterTime(semester, classData.data[i].startDate))
+            classNbrs.push(classData.data[i].classNbr);
+    }
+    if(classNbrs.length == 0){
+		res.status(200).send([]);
+        console.log("class list is empty");
+        return;
+	}
+
+    //get students IDs from all the classes
+    let studentIDs = await getEnrolledStudents(classNbrs); 
+  
+    //convert student IDs into upis
+    let upis = await getUPIsFromIDs(studentIDs);
+   
+    res.status(200).send(upis);
+});
+
+
+function getEnrolledStudents(classNbrs){
+    return new Promise((resolve) => {
+        let numOfClasses = classNbrs.length;
+        let studentIDs = [];
+        let year = new Date().getFullYear();
+        let errorOccured = false;
+        let loadedClasses = 0;
+
+        for(let i = 0; i < numOfClasses; i++){
+            if(errorOccured)
+                break;
+            let url = global.enrolment_api_base_url + "?size=1000&offset=0&acadYear="+year+"&classId="+classNbrs[i];
+            request(
+                {
+                    headers: {'apikey': global.class_enrol_api_token},
+                    uri: url,
+                    method: 'GET'
+                },
+                function (error, response, body) {
+                    if(!error){
+                        let result = JSON.parse(body);
+                        if(result._embedded != null){
+                            result = result._embedded.enrolments;
+                            for(let j = 0; j < result.length; j++){
+                                studentIDs.push(result[j].enrolment.studentId);
+                            }
+                        }
+                        loadedClasses++;
+                        if(loadedClasses == numOfClasses)
+                            resolve(studentIDs);    			
+                    }else{
+                        console.log(error);
+                        resolve(null);
+                        errorOccured = true;
+                    }
+                }
+            );
+        }
+
+    });
+}
+
+
+function getClasses(acadOrg, catalogNbr){
+    return new Promise((resolve) => {
+        let url = global.classes_api_base_url + "?acadOrg=" + acadOrg + "&catalogNbr=" + catalogNbr + "&from=0&isActive=true&page=0&size=500";
+    
+        request(
+            {
+                headers: {'apikey': global.class_enrol_api_token},
+                uri: url,
+                method: 'GET'
+            },
+            function (error, response, body) {
+                if(!error){
+                    resolve(body);
+                }else{
+                    console.log(error);
+                    resolve(null);
+                }
+            }
+        );
+    });
+}
+
+
+
+function validateSemesterTime(semester, date){
+    let semesterStartTime = new Date();
+    let semesterMidTime = new Date();
+
+    let startDate = new Date(date).getTime();
+	
+    if(semester == "SS"){
+        semesterStartTime.setMonth(0);
+        semesterStartTime.setDate(1);
+        semesterMidTime.setMonth(0);
+        semesterMidTime.setDate(17);
+    }else if(semester == "S1"){
+        semesterStartTime.setMonth(1);
+        semesterStartTime.setDate(15);
+        semesterMidTime.setMonth(2);
+        semesterMidTime.setDate(15);
+    }else if(semester == "S2"){
+        semesterStartTime.setMonth(6);
+        semesterStartTime.setDate(6);
+        semesterMidTime.setMonth(8);
+        semesterMidTime.setDate(15);
+    }
+    if(startDate > semesterStartTime && startDate < semesterMidTime)
+        return true;
+    else
+        return false;
+}
+
+async function getUPIsFromIDs(IDs) { 
+    var client = ldap.createClient({
+      url: global.ldap_server_url
+    });
+    
+  
+    var cnFilter = "";
+    for(var i = 0; i < IDs.length; i++){
+      cnFilter = cnFilter + "(employeeNumber=" + IDs[i] + ")";
+    }
+  
+    var opts = {
+        filter: '(&(objectCategory=user)(|'+cnFilter+'))',
+        scope: 'sub',
+        attributes: ['cn'],
+        paged: {
+            pageSize: 250,
+            pagePause: false
+        }
+    };
+
+    
+    let ldapBind =  new Promise((resolve, reject) => {
+        client.bind('cn='+ global.ldap_username +',ou=People,dc=UoA,dc=auckland,dc=ac,dc=nz', global.ldap_password, function(err) {
+            if(err){
+                reject("error: Ldap bind failed");
+            }else{
+                resolve();
+            }
+        }); 
+	});
+
+    try{
+		await ldapBind;
+	}catch(error){
+		console.log(error);
+        client.destroy();
+        return "";
+	}
+
+    let runSearchUser = new Promise((resolve, reject) => {
+        client.search('ou=People,dc=UoA,dc=auckland,dc=ac,dc=nz', opts, function (err, search) {
+            if(err){
+                reject(err);
+                unbindClient();
+            }else{
+                let upis = [];
+                let i = 0;
+                search.on('searchEntry', function (entry) {
+                    upis.push({"upi":  entry.object.cn});
+    
+                });
+                search.on('end', function(result) {
+                    resolve(upis);
+                    unbindClient();
+                });
+            }
+        });
+    });
+
+    try{
+        return await runSearchUser;
+	}catch(error){
+		console.log(error);
+        return "";
+	}
+    
+    function unbindClient(){
+        client.unbind(function(err) {
+            if(err){
+                console.log(err);
+            }
+        });
+    }
+}; 
+
+module.exports = router;
