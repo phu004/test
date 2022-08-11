@@ -1,0 +1,47 @@
+<head>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+</head>
+
+<br>
+<label>Academic Organization:</label><br>
+<input type="text" id="acadOrg"><br>
+<label>Catalogue number:</label><br>
+<input type="text" id="catalogNbr"><br>
+<label>Semester:</label><br>
+<select id="semester" style="height: 22px; width: 170px">
+    <option value="S1">Semester 1</option>
+    <option value="S2">Semester 2</option>
+    <option value="SS">Summer School</option>
+</select><br>
+<br>
+<button type="button" id="getStudents" onclick="getStudents()">Get Students</button>
+
+<br><br><br>
+<label id="num"><b>Number of students:</b></label><br>
+<label id="time"><b>Time takes to run query:</b></label><br>
+<label id="list"><b>Student list:</b></label><br>
+
+<script>
+    function getStudents(){
+        var startTime = new Date().getTime();
+
+        var acadOrg = document.getElementById("acadOrg").value.toUpperCase();
+        var catalogNbr = document.getElementById("catalogNbr").value;
+        var semester = document.getElementById("semester").value;
+        $.ajax({
+            type:'GET',
+            url:'http://localhost:3000/getStudents?acadOrg='+acadOrg+"&catalogNbr="+catalogNbr+"&semester="+semester,
+            success: function(data){
+                var endTime = new Date().getTime();
+                var result = "";
+                for(var i = 0; i < data.length; i++){
+                    result+=data[i].upi + ", ";
+                }
+                document.getElementById("num").innerHTML = "<b>Number of students:</b> " + data.length;
+                document.getElementById("time").innerHTML = "<b>Time takes to run query:</b> " + (endTime - startTime) + " milliseconds";
+                document.getElementById("list").innerHTML = "<b>Student list:</b> " + result;
+               
+            }
+        });
+    }
+</script>
