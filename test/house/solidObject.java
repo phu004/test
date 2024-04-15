@@ -10,6 +10,15 @@ public class solidObject implements model{
 	public int backGroundModelCount;
 	public boolean inside;
 	public vector  s;
+	
+	public int screen_w = house.screen_w;
+	public int screen_h = house.screen_h;
+	public int screen_w_minus_1 = screen_w - 1;
+	public int screen_h_minus_1 = screen_h - 1;
+	public int half_screen_w = screen_w/2;
+	public int half_screen_h = screen_h/2;
+	public int screen_pixel_count = screen_w * screen_h;
+	public int start = screen_h_minus_1;
 
 	/*public solidObject(polygon3D[] boundary){
 		this.boundary = boundary;
@@ -81,8 +90,8 @@ public class solidObject implements model{
 
 		int xMax = 0;
 		int yMax = 0;
-		int xMin = 639;
-		int yMin = 479;
+		int xMin = screen_w_minus_1;
+		int yMin = screen_h_minus_1;
 
 
 		if(!code.equals("skyBox") && !code.equals("B") && !inside){
@@ -98,12 +107,12 @@ public class solidObject implements model{
 			if(xMax - xMin <= 0 || yMax - yMin <= 0)
 				return;
 
-			if(xMax > 639)
-				xMax = 639;
+			if(xMax > screen_w_minus_1)
+				xMax = screen_w_minus_1;
 			if(xMin < 0)
 				xMin = 0;
-			if(yMax > 479)
-				yMax = 479;
+			if(yMax > screen_h_minus_1)
+				yMax = screen_h_minus_1;
 			if(yMin < 0)
 				yMin = 0;
 
@@ -115,12 +124,12 @@ public class solidObject implements model{
 			double i;
 			double k;
 			int j;
-			int middleLine =( yMax -(yMax - yMin)/2)*640;
-			int oneQuarter = ( yMax -(yMax - yMin)/4)*640;
-			int threeQuarter = ( yMin +(yMax - yMin)/4)*640;
+			int middleLine =( yMax -(yMax - yMin)/2)*screen_w;
+			int oneQuarter = ( yMax -(yMax - yMin)/4)*screen_w;
+			int threeQuarter = ( yMin +(yMax - yMin)/4)*screen_w;
 
-			for(i = xMin, k = xMax, j = yMin; j <= 480 && i <= xMax; i+=dx, k-=dx, j++){
-				if(j > 478)
+			for(i = xMin, k = xMax, j = yMin; j <= screen_h && i <= xMax; i+=dx, k-=dx, j++){
+				if(j > screen_h-2)
 					break;
 
 				if(screenBuffer[oneQuarter + (int)i] == emptyPixel){
@@ -138,11 +147,11 @@ public class solidObject implements model{
 					break;
 				}
 
-				if(screenBuffer[j*640 + (int)i] == emptyPixel){
+				if(screenBuffer[j*screen_w + (int)i] == emptyPixel){
 					withinView = true;
 					break;
 				}
-				if(screenBuffer[j*640 + (int)k] == emptyPixel){
+				if(screenBuffer[j*screen_w + (int)k] == emptyPixel){
 					withinView = true;
 					break;
 				}
@@ -156,7 +165,7 @@ public class solidObject implements model{
 		for(int i = 0; i < p.length; i++)
 			p[i].update();
 
-		if(!sortedPolygons && camera.cameraMoved){
+		if(!sortedPolygons){
 			int length = polygons.length - backGroundModelCount;
 			for(int i = 1; i < length; i++){
 				for(int j = 0; j <length - i; j++){

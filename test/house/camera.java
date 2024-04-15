@@ -9,11 +9,9 @@ public class camera{
 
 	public static double look_up, look_down, look_right, look_left;
 
-	public static boolean cameraMoved;
-
 	public static final vector viewDirection = new vector(0, 0, 1);
 
-	public static final Rectangle screen = new Rectangle(0,0,640, 480);
+	public static final Rectangle screen = new Rectangle(0,0,house.screen_w, house.screen_h);
 
 	public static double sinXZ, cosXZ, sinYZ, cosYZ;
 
@@ -29,14 +27,6 @@ public class camera{
 
 	public static final void update(){
 		vector oldPosition = position.myClone();
-
-		if(UP_TYPED || DOWN_TYPED || RIGHT_TYPED || LEFT_TYPED || MOVE_FORWARD || MOVE_BACKWARD || SLIDE_LEFT || SLIDE_RIGHT || house.counter == 0)
-			cameraMoved = true;
-		else
-			cameraMoved = false;
-		
-
-
 
 		if(UP_TYPED){
 			look_up+=0.05;

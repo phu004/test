@@ -8,6 +8,12 @@ public final class vector{
 	public static int Z_length = 500;
 
 	public static double cosXZ, cosYZ, sinXZ, sinYZ, old_X, old_Y, old_Z, zInverse, lengthInverse;
+	
+	public int screen_w = house.screen_w;
+	public int screen_h = house.screen_h;
+	public int half_screen_w = screen_w/2;
+	public int half_screen_h = screen_h/2;
+	public int screen_pixel_count = screen_w * screen_h;
 
 	public vector(double x, double y, double z){
 		this.x = x;
@@ -163,10 +169,10 @@ public final class vector{
 
 	public final void updateLocation(){
 		if(z <= 0.01){
-			screenX = (int)(x*Z_length*100) + 320; screenY = (int)(-y*Z_length*100) + 240;
+			screenX = (int)(x*Z_length*100) + half_screen_w; screenY = (int)(-y*Z_length*100) + half_screen_h;
 		}else{
 			zInverse = Z_length/z;
-			screenX = (int)(x*zInverse) + 320; screenY = (int)(-y*zInverse) + 240;
+			screenX = (int)(x*zInverse) + half_screen_w; screenY = (int)(-y*zInverse) + half_screen_h;
 		}
 	}
 
@@ -191,10 +197,10 @@ public final class vector{
 		z = camera.sinYZ*old_Y + camera.cosYZ*old_Z;
 
 		if(z <= 0.01){
-			screenX = (int)(x*Z_length*100) + 320; screenY = (int)(-y*Z_length*100) + 240;
+			screenX = (int)(x*Z_length*100) + half_screen_w; screenY = (int)(-y*Z_length*100) + half_screen_h;
 		}else{
 			zInverse = Z_length/z;
-			screenX = (int)(x*zInverse) + 320; screenY = (int)(-y*zInverse) + 240;
+			screenX = (int)(x*zInverse) + half_screen_w; screenY = (int)(-y*zInverse) + half_screen_h;
 		}
 	}
 

@@ -5,12 +5,18 @@ public class gameData{
 	public static int[][] colorTable;
 	public static texture glass1, glass2;
 	public static short[] randomNumber;
+	
+	public static int screen_w = house.screen_w;
+	public static int screen_h = house.screen_h;
+	public static int half_screen_w = screen_w/2;
+	public static int half_screen_h = screen_h/2;
+	public static int screen_pixel_count = screen_w * screen_h;
 
 	public static void makeData(){
-		screenTable = new int[480];
+		screenTable = new int[screen_h];
 
-		for(int i = 0; i < 480; i++)
-			screenTable[i] = 640*i;
+		for(int i = 0; i < screen_h; i++)
+			screenTable[i] = screen_w*i;
 
 		int[][] colorTable_ = new int[32768][32];
 		colorTable = new int[32][32768];

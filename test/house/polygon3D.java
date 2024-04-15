@@ -29,7 +29,7 @@ public final class polygon3D{
 	public int L;
 	public vector view = new vector(0,0,1);
 	public int end = 0;
-	public int start = 479;
+	
 	public boolean isLightMap;
 	public short[] Texture_;
 	public int Z_length;
@@ -49,6 +49,15 @@ public final class polygon3D{
 	public int type;  //0 = normal polygon, 1 = skybox polygon,  2 = glass1,  3 = glass2, 4 =glass3
 	public static int[] tempBuffer;
 	public int xMax, yMax, xMin, yMin;
+	
+	public int screen_w = house.screen_w;
+	public int screen_h = house.screen_h;
+	public int screen_w_minus_1 = screen_w - 1;
+	public int screen_h_minus_1 = screen_h - 1;
+	public int half_screen_w = screen_w/2;
+	public int half_screen_h = screen_h/2;
+	public int screen_pixel_count = screen_w * screen_h;
+	public int start = screen_h_minus_1;
 
 
 	public polygon3D(vector[] vertix3D, vector origin,  vector  rightEnd, vector bottomEnd,  texture myTexture){
@@ -131,12 +140,12 @@ public final class polygon3D{
 			vertixNormals[i] = new vector(0,0,0);
 
 		if(xLow == null){
-			xLow = new int[480];
-			xHigh = new int[480];
-			s_left= new int[480];
-			s_right = new int[480];
-			xChange_left = new int[480];
-			xChange_right = new int[480];
+			xLow = new int[screen_h];
+			xHigh = new int[screen_h];
+			s_left= new int[screen_h];
+			s_right = new int[screen_h];
+			xChange_left = new int[screen_h];
+			xChange_right = new int[screen_h];
 		}
 	}
 
@@ -416,10 +425,10 @@ public final class polygon3D{
 
 	public final void scanPolygon(){
 		int minX = 0;
-		int maxX = 639;
+		int maxX = screen_w_minus_1;
 		int minY = 0;
-		int maxY = 479;
-		start = 479;
+		int maxY = screen_h_minus_1;
+		start = screen_h_minus_1;
 		end = 0;
 		int temp_ = 0;
 		int g = 0;
@@ -541,7 +550,7 @@ public final class polygon3D{
 						if(downwards){
 							xLow[y] = x;
 						}else{
-							if(x < 639)
+							if(x < screen_w_minus_1)
 								x++;
 							xHigh[y] = x ;
 						}
@@ -604,12 +613,12 @@ public final class polygon3D{
 		boolean[] transparentBuffer = house.transparentBuffer;
 
 		if(tempBuffer == null)
-			tempBuffer = new int[640*480];
+			tempBuffer = new int[screen_w*screen_h];
 
 		if(type == 2){
 			for(i = start; i < end; i++){
 				needToRecaluclate = true;
-				W.set(xLow_transprent[i]-320, -i + 240, Z_length);
+				W.set(xLow_transprent[i]-half_screen_w, -i + half_screen_h, Z_length);
 				aDotW = A.dot(W);
 				bDotW = B.dot(W);
 				cDotW = C.dot(W);
@@ -642,8 +651,8 @@ public final class polygon3D{
 								if(transparentBuffer[index]){
 									textureIndex = (((d_x/offset) + X)&widthMask) + ((((d_y/offset) + Y)&heightMask)<<widthBits);
 									temp_ = Texture[textureIndex];
-									theIndex = index + temp_*640;
-									if(theIndex< 0 || theIndex >= 307200)
+									theIndex = index + temp_*screen_w;
+									if(theIndex< 0 || theIndex >= screen_pixel_count)
 										theIndex = index;
 									tempBuffer[index] = screen[theIndex];
 								}
@@ -674,8 +683,8 @@ public final class polygon3D{
 						if(transparentBuffer[index]){
 							textureIndex = (((d_x>>4) + X)&widthMask) + ((((d_y>>4) + Y)&heightMask)<<widthBits);
 							temp_ = Texture[textureIndex];
-							theIndex = index + temp_*640;
-							if(theIndex< 0 || theIndex >= 307200)
+							theIndex = index + temp_*screen_w;
+							if(theIndex< 0 || theIndex >= screen_pixel_count)
 								theIndex = index;
 							tempBuffer[index] = screen[theIndex];
 						}
@@ -690,8 +699,8 @@ public final class polygon3D{
 				for(j = xLow_transprent[i]; j < xHigh_transprent[i]; j++, textureIndex++){
 					index = j+ temp;
 					temp_ = Texture[textureIndex%4096];
-					theIndex = index + ((temp_>>3)-3)*640 + (temp_&7)-3;
-					if(theIndex< 0 || theIndex >= 307200)
+					theIndex = index + ((temp_>>3)-3)*screen_w + (temp_&7)-3;
+					if(theIndex< 0 || theIndex >= screen_pixel_count)
 						theIndex = index;
 					tempBuffer[index] = screen[theIndex];
 				}
@@ -704,8 +713,8 @@ public final class polygon3D{
 				for(j = xLow_transprent[i]; j < xHigh_transprent[i]; j++, textureIndex++){
 					index = j+ temp;
 					temp_ = Texture[textureIndex%4096];
-					theIndex = index + ((temp_>>3)-3)*640 + (temp_&7)-3;
-					if(theIndex< 0 || theIndex >= 307200)
+					theIndex = index + ((temp_>>3)-3)*screen_w + (temp_&7)-3;
+					if(theIndex< 0 || theIndex >= screen_pixel_count)
 						theIndex = index;
 					int color = screen[theIndex];
 					r = (color>> 16) & 0xff;
@@ -761,12 +770,12 @@ public final class polygon3D{
 
 		if(type >=2){
 			if(xLow_transprent == null){
-				xLow_transprent = new int[480];
-				xHigh_transprent = new int[480];
+				xLow_transprent = new int[screen_h];
+				xHigh_transprent = new int[screen_h];
 
 			}
 
-			for(int i = 0; i < 480; i++){
+			for(int i = 0; i < screen_h; i++){
 				xLow_transprent[i] = xLow[i];
 				xHigh_transprent[i] = xHigh[i];
 			}
@@ -806,7 +815,7 @@ public final class polygon3D{
 					continue;
 				}
 				needToRecaluclate = true;
-				W.set(xLow[i]-320, -i + 240, Z_length);
+				W.set(xLow[i]-half_screen_w, -i + half_screen_h, Z_length);
 				aDotW = A.dot(W);
 				bDotW = B.dot(W);
 				cDotW = C.dot(W);
@@ -1053,7 +1062,7 @@ public final class polygon3D{
 			int[] table =  colorTable[diffuse_I];
 			for(int i = start; i <= end; i++){
 				needToRecaluclate = true;
-				W.set(xLow[i]-320, -i + 240, Z_length);
+				W.set(xLow[i]-half_screen_w, -i + half_screen_h, Z_length);
 				aDotW = A.dot(W);
 				bDotW = B.dot(W);
 				cDotW = C.dot(W);
